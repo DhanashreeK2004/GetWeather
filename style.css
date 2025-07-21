@@ -3,76 +3,178 @@ background-image:url('default.jpg');
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;}
-body {
+
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+#container {
+  background-image: url("images/default.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
+  color: #fff;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  transition: background-image 0.5s ease-in-out;
-}
-
-.container {
-  background-color: rgba(255, 255, 255, 0.8);
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
+  transition: background-image 0.4s ease-in-out;
 }
 
-input[type="text"] {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.search-box {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .buttons {
+  margin-top: 1rem;
   display: flex;
-  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  justify-content: center;
 }
 
-button {
-  padding: 0.6rem 1.2rem;
+.buttons button {
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
   border: none;
-  border-radius: 5px;
-  background-color: #333;
-  color: white;
+  border-radius: 999px; /* pill shape */
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15); /* frosted glass effect */
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 0.9rem;
+  transition: background 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-button:hover {
-  background-color: #555;
+.buttons button:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
-#weatherResult h2 {
+#use-location {
+  padding: 12px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 999px; /* Pill shape */
+  background: rgba(255, 255, 255, 0.15); /* Glass look */
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+#use-location:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.search-box h1 {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.search-box h1 span {
+  color: #f7e018;
+}
+
+.search-box input {
+  padding: 0.6rem 1rem;
+  width: 250px;
+  border: none;
+  border-radius: 25px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-box button {
+  padding: 0.6rem;
+  margin-left: 5px;
+  font-size: 1rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  width: 90%;
+  max-width: 320px;
+  color: #000;
+}
+
+.card h2 {
+  font-size: 1.6rem;
+}
+
+.card p {
   margin: 0.5rem 0;
+  font-size: 1rem;
 }
 
-#weatherResult p {
-  margin: 0.2rem 0;
+.temp {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0.8rem 0;
 }
 
-@media (max-width: 600px) {
-  .container {
-    padding: 1rem;
+.details {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.details img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.card button {
+  margin-top: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .search-box h1 {
+    font-size: 2rem;
   }
-  input[type="text"] {
-    font-size: 0.9rem;
+
+  .card {
+    padding: 1.5rem;
   }
-  button {
-    font-size: 0.85rem;
+
+  .temp {
+    font-size: 2.5rem;
   }
 }
