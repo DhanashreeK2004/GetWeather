@@ -61,19 +61,19 @@ function updateWeather(data) {
 }
 
 function setBackground(condition) {
-  let img = "images/default.jpg";
+  let img = "default.jpg";
 
   switch (condition.toLowerCase()) {
     case "clear":
-      img = "images/clear.jpg";
+      img = "clear.jpg";
       break;
     case "clouds":
-      img = "images/clouds.jpg";
+      img = "clouds.jpg";
       break;
     case "rain":
     case "drizzle":
     case "mist":
-      img = "images/rain.jpg";
+      img = "rain.jpg";
       break;
   }
 
@@ -83,7 +83,7 @@ function setBackground(condition) {
 function goBack() {
   document.getElementById("weatherInfo").classList.add("hidden");
   document.getElementById("cityInput").value = "";
-  container.style.backgroundImage = `url('images/default.jpg')`;
+  container.style.backgroundImage = `url('default.jpg')`;
 }
 
 function capitalize(str) {
