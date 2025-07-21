@@ -3,71 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsive Weather App</title>
+  <title>Get Weather</title>
+  <link rel="icon" href="images/weather-icon.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="weather-box">
+  <div id="container">
+    <div class="search-box">
+      <img src="images/weather-icon.png" alt="Logo" class="logo" />
+      <h1>Get <span>Weather</span></h1>
       <input type="text" id="cityInput" placeholder="Search your city" />
       <div class="buttons">
-        <button onclick="getWeather()">Search</button>
-        <button onclick="getLocationWeather()">Use My Location</button>
+        <button onclick="getWeather()">🔍</button>
+        <button id="use-location"onclick="getLocation()">📍 Use My Location</button>
       </div>
-      <div id="weatherResult"></div>
+    </div>
+
+    <div id="weatherInfo" class="card hidden">
+      <h2 id="location">Your Place</h2>
+      <p id="condition">--</p>
+      <div class="temp"><span id="temperature">--</span>°</div>
+      <div class="details">
+        <p><img src="images/humidity.png" width="20" /> <strong>Humidity</strong>: <span id="humidity">--%</span></p>
+        <p><img src="images/wind.png" width="20" /> <strong>Wind</strong>: <span id="wind">-- Kph</span></p>
+      </div>
+      <button onclick="goBack()">‹ Back</button>
     </div>
   </div>
 
-  <script>
-    const apiKey = "0b25ec0f691b65dc6bb04b517d0cab01";
-
-    function setBackground(condition) {
-      let body = document.body;
-      let image;
-      condition = condition.toLowerCase();
-      if (condition.includes("rain")) image = "rain.jpg";
-      else if (condition.includes("cloud")) image = "cloud.jpg";
-      else if (condition.includes("clear")) image = "clear.jpg";
-      else if (condition.includes("mist")) image = "mist.jpg";
-      else image = "default.jpg";
-      body.style.backgroundImage = `url('${image}')`;
-    }
-
-    function getWeather() {
-      const city = document.getElementById("cityInput").value;
-      if (!city) return alert("Please enter a city name");
-      fetchWeather(city);
-    }
-
-    function getLocationWeather() {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude } = position.coords;
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-        fetch(url)
-          .then((res) => res.json())
-          .then((data) => displayWeather(data));
-      }, () => alert("Location access denied."));
-    }
-
-    function fetchWeather(city) {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => displayWeather(data));
-    }
-
-    function displayWeather(data) {
-      if (data.cod !== 200) {
-        document.getElementById("weatherResult").innerHTML = "City not found.";
-        return;
-      }
-      const name = data.name;
-      const temp = data.main.temp;
-      const description = data.weather[0].description;
-      setBackground(description);
-      document.getElementById("weatherResult").innerHTML =
-        `<h2>${name}</h2><p>${temp} °C</p><p>${description}</p>`;
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
