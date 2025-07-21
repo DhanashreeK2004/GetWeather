@@ -16,7 +16,7 @@ body, html {
 }
 
 #container {
-  background-image: url("images/default.jpg");
+  background-image: url("default.jpg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
